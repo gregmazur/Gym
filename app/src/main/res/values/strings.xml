@@ -13,4 +13,5 @@
     <string name="new_wrist_hint">Your wrist girth</string>
     <string name="new_height_hint">Your height (cm)</string>
     <string name="new_name_hint">Your name</string>
+    <string name="current_weight">Your current weight</string>
 </resources>

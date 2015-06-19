@@ -1,9 +1,11 @@
 package home.gym;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
@@ -17,7 +19,7 @@ import java.util.List;
 /**
  * Created by greg on 18.06.15.
  */
-public class LoginActivity extends Activity implements AbsListView.OnScrollListener {
+public class LoginActivity extends FragmentActivity implements AbsListView.OnScrollListener {
 
     private static final int MAX_ROWS = 50;
     private int lastTopValue = 0;
@@ -65,5 +67,9 @@ public class LoginActivity extends Activity implements AbsListView.OnScrollListe
             lastTopValue = rect.top;
             backgroundImage.setY((float) (rect.top / 2.0));
         }
+    }
+    public void registration(View view){
+        Intent intent = new Intent(this, Registration_activity.class);
+        startActivity(intent);
     }
 }
