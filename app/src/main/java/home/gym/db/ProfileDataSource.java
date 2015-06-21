@@ -19,7 +19,7 @@ public class ProfileDataSource {
     private MySQLiteHelper dbHelper;
     private String[] allColumns = {MySQLiteHelper.KEY_ID,
             MySQLiteHelper.KEY_USER_NAME, MySQLiteHelper.KEY_USER_TYPE, MySQLiteHelper.KEY_USER_SEX,
-            MySQLiteHelper.KEY_USER_IDEAL_WEIGHT, MySQLiteHelper.KEY_USER_CURRENT_WEIGHT,MySQLiteHelper.KEY_CREATED_AT};
+            MySQLiteHelper.KEY_USER_IDEAL_WEIGHT, MySQLiteHelper.KEY_USER_CURRENT_WEIGHT, MySQLiteHelper.KEY_CREATED_AT};
 
     public ProfileDataSource(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -42,20 +42,23 @@ public class ProfileDataSource {
         values.put(MySQLiteHelper.KEY_USER_CURRENT_WEIGHT, profile.getCurrentWeight());
         values.put(MySQLiteHelper.KEY_CREATED_AT, MySQLiteHelper.getCurrentTime());
 
-
-//        Cursor cursor = database.query(MySQLiteHelper.TABLE_PROFILES,
-//                allColumns, MySQLiteHelper.KEY_ID + " = " + id, null,
-//                null, null, null);
-//        cursor.moveToFirst();
-//        Profile profileFromDB = cursorToProfile(cursor);
-//        cursor.close();
         return database.insert(MySQLiteHelper.TABLE_PROFILES, null,
                 values);
+
+    }
+
+    public Profile getProfileByID(int id) {
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_PROFILES,
+                allColumns, MySQLiteHelper.KEY_ID + " = " + id, null,
+                null, null, null);
+        cursor.moveToFirst();
+        Profile profile = cursorToProfile(cursor);
+        cursor.close();
+        return profile;
     }
 
 
-
-        public List<Profile> getAllProfiles() {
+    public List<Profile> getAllProfiles() {
         List<Profile> profiles = new ArrayList<Profile>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_PROFILES,

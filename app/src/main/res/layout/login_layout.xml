@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffff5223">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250sp"
+        android:id="@+id/imageView"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/maxresdefault"
+        android:contentDescription="@string/logo_registration" />
+
+    <ListView
+        android:orientation="vertical"
+        android:id="@+id/usersContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center_horizontal"></ListView>
+
+    <Button
+        android:layout_width="386dp"
+        android:layout_height="wrap_content"
+        android:text="@string/newUserButton"
+        android:id="@+id/button"
+        android:onClick="registration"
+        android:layout_gravity="bottom|center_horizontal" />
+</LinearLayout>

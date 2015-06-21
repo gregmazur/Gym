@@ -1,22 +1,20 @@
 package home.gym;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+
 import android.widget.ListView;
 
 
 import java.util.List;
 
+import home.gym.Fragments.WeightRequest;
 import home.gym.db.ProfileDataSource;
 import home.gym.entity.Profile;
 
@@ -24,76 +22,54 @@ import home.gym.entity.Profile;
 /**
  * Created by greg on 18.06.15.
  */
-public class LoginActivity extends Activity implements AbsListView.OnScrollListener
-         {
+public class LoginActivity extends FragmentActivity implements WeightRequest.EditNameDialogListener {
 
-    private int lastTopValue = 0;
 
     private List<Profile> users;
     private ListView listView;
-    private ImageView backgroundImage;
     private ArrayAdapter adapter;
     private ProfileDataSource dataSource;
+    public Intent intent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
-        listView = (ListView) findViewById(R.id.list);
+        setContentView(R.layout.login_layout);
+        listView = (ListView) findViewById(R.id.usersContainer);
         dataSource = new ProfileDataSource(this);
         dataSource.open();
         users = dataSource.getAllProfiles();
-
-
-        adapter = new ArrayAdapter(this, R.layout.users_list, users);
+        adapter = new ArrayAdapter(this, R.layout.list_items, users);
         listView.setAdapter(adapter);
-//        listView.setOnClickListener(new ListView.OnItemClickListener() {
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//
-//                startActivity(intent);
-//            }
-//        });
+        listView.setClickable(true);
+        listView.setFocusable(true);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-        // inflate custom header_login and attach it to the list
-        LayoutInflater inflater = getLayoutInflater();
-        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.header_login, listView, false);
-        listView.addHeaderView(header, null, false);
-        ViewGroup footer = (ViewGroup) inflater.inflate(R.layout.footer_login,listView,false);
-        listView.addFooterView(footer,null,true);
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        // we take the background image and button reference from the header_login
-        backgroundImage = (ImageView) header.findViewById(R.id.listHeaderImage);
-        listView.setOnScrollListener(this);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                showEditDialog();
 
+                startActivity(intent);
+            }
+        });
     }
 
-    @Override
-    public void onScrollStateChanged(AbsListView view, int scrollState) {
 
-    }
-
-    @Override
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-        Rect rect = new Rect();
-        backgroundImage.getLocalVisibleRect(rect);
-        if (lastTopValue != rect.top) {
-            lastTopValue = rect.top;
-            backgroundImage.setY((float) (rect.top / 2.0));
-        }
-    }
-    public void registration(View view){
+    public void registration(View view) {
         Intent intent = new Intent(this, Registration_activity.class);
         startActivity(intent);
     }
 
+    private void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        WeightRequest weightRequest = new WeightRequest();
+        weightRequest.show(fm, "fragment_edit_name");
+    }
 
-
-//    @Override
-//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//Intent intent = new Intent(this,MainActivity.class);
-//        startActivity(intent);
-//    }
+    @Override
+    public void onFinishEditDialog(Float input) {
+        intent.putExtra("WEIGHT", input);
+    }
 }

@@ -6,7 +6,7 @@ package home.gym.entity;
 public class BaseEntity {
     private int id;
     private String createdAt;
-    private String getCreatedBy;
+    private String createdBy;
     private String modifiedAt;
     private String modifiedBy;
 
@@ -26,12 +26,12 @@ public class BaseEntity {
         this.createdAt = createdAt;
     }
 
-    public String getGetCreatedBy() {
-        return getCreatedBy;
+    public String getCreatedBy() {
+        return createdBy;
     }
 
-    public void setGetCreatedBy(String getCreatedBy) {
-        this.getCreatedBy = getCreatedBy;
+    public void setCreatedBy(String getCreatedBy) {
+        this.createdBy = getCreatedBy;
     }
 
     public String getModifiedAt() {

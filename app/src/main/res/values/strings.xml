@@ -17,4 +17,9 @@
     <string name="congratulations_profile_created">Congratulations!!! /n You`re in!</string>
     <string name="existed_name_error">Please enter a different name./n User with such name already exists</string>
     <string name="empty_field_error">Please fill every field</string>
+    <string name="logo_registration">logo</string>
+    <string name="btn_customTraining">CUSTOM TRAINING</string>
+    <string name="btn_choseProgram">CHOSE TRAINING PROGRAM</string>
+    <string name="weight_request">Enter your current weight(kg)</string>
+    <string name="weight_request_dialog_title">Enter current body weight</string>
 </resources>

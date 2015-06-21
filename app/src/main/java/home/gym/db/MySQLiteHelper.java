@@ -12,6 +12,7 @@ import java.util.Date;
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_PROFILES = "profiles";
+    public static final String TABLE_EXERCISES = "exercises";
 
     //Base Fields
     public static final String KEY_ID = "_id";
@@ -28,16 +29,36 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String KEY_USER_IDEAL_WEIGHT = "user_ideal_weight";
     public static final String KEY_USER_CURRENT_WEIGHT = "user_current_weight";
 
+    //Exercise Table Fields
+
+    public static final String KEY_EXERCISE_NAME = "exercise_name";
+    public static final String KEY_EXERCISE_PRI_MUSCLE = "exercise_pri_muscle";
+    public static final String KEY_EXERCISE_SEC_MUSCLE = "exercise_sec_muscle";
+    public static final String KEY_EXERCISE_DESCRIPTION = "exercise_description";
+    public static final String KEY_EXERCISE_PIC1 = "exercise_pic1";
+    public static final String KEY_EXERCISE_PIC2 = "exercise_pic2";
+    public static final String KEY_EXERCISE_PIC3 = "exercise_pic3";
+
     private static final String DATABASE_NAME = "gymbo.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     // Database creation sql statement
-    private static final String DATABASE_CREATE = "create table "
+    private static final String DATABASE_CREATE =//profiles
+            "create table "
             + TABLE_PROFILES + "(" + KEY_ID
             + " integer primary key autoincrement, " + KEY_USER_NAME
             + " text not null unique, " + KEY_USER_TYPE + " text, " + KEY_USER_SEX + " integer not null, "
             + KEY_USER_IDEAL_WEIGHT + " real not null, " + KEY_USER_CURRENT_WEIGHT + " real not null, "
-            + KEY_CREATED_AT + " text);";
+            + KEY_CREATED_AT + " text);"
+            //exercises
+            + "create table "
+            + TABLE_EXERCISES + "(" + KEY_ID
+            + " integer primary key autoincrement, " + KEY_EXERCISE_NAME
+            + " text not null unique, " + KEY_EXERCISE_PRI_MUSCLE + " text not null, " + KEY_EXERCISE_SEC_MUSCLE + " text, "
+            + KEY_EXERCISE_DESCRIPTION + " text, " + KEY_EXERCISE_PIC1 + " blob, " + KEY_EXERCISE_PIC2 + " blob, "
+            + KEY_EXERCISE_PIC3 + " blob, " + KEY_CREATED_AT + " text," + KEY_CREATED_BY + " text," + KEY_MODIFIED_AT + " text,"
+            + KEY_MODIFIED_BY + " text);";
+
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -60,6 +81,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFILES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXERCISES);
         onCreate(db);
     }
 

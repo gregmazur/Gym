@@ -2,12 +2,11 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#ff002cff"
+    android:background="#ffff8260"
     android:gravity="center_vertical|center_horizontal"
     android:text="List Item"
     android:padding="8dp"
     android:minHeight="40dp"
     android:textColor="#ff000000"
     android:textSize="20dp"
-    android:clickable="true"
     android:textStyle="normal|italic" />

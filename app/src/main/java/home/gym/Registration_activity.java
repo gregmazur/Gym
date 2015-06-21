@@ -1,6 +1,7 @@
 package home.gym;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
 
@@ -25,7 +26,7 @@ public class Registration_activity extends Activity {
     EditText age;
     EditText weight;
     RadioGroup sex;
-    RadioButton male,female;
+    RadioButton male, female;
     ProfileDataSource dataSource;
 
     @Override
@@ -43,24 +44,26 @@ public class Registration_activity extends Activity {
         dataSource = new ProfileDataSource(this);
         dataSource.open();
     }
-    public void submit(View view){
-        try{
-        Profile profile = new Profile(name.getText().toString().toUpperCase(),Integer.parseInt(wrist.getText().toString()),
-                Integer.parseInt(height.getText().toString()),true, Integer.parseInt(age.getText().toString()),
-                Float.parseFloat(weight.getText().toString()));
 
-      if(dataSource.createProfile(profile) > 0){
-           Log.i("profile on registration", "created");
-           Toast.makeText(this, getResources().getString(R.string.congratulations_profile_created),Toast.LENGTH_SHORT).show();
-           Log.i("profile on registration", "in DB");
-       }}catch (SQLiteConstraintException e){
-           Toast.makeText(this, getResources().getString(R.string.existed_name_error),Toast.LENGTH_LONG).show();
-       }catch (NumberFormatException e){
-           Toast.makeText(this, getResources().getString(R.string.empty_field_error),Toast.LENGTH_LONG).show();
-       }
-
-
-
+    public void submit(View view) {
+        try {
+            Profile profile = new Profile(name.getText().toString().toUpperCase(), Integer.parseInt(wrist.getText().toString()),
+                    Integer.parseInt(height.getText().toString()), true, Integer.parseInt(age.getText().toString()),
+                    Float.parseFloat(weight.getText().toString()));
+            long userId = dataSource.createProfile(profile);
+            if (userId > 0) {
+                Log.i("profile on registration", "created");
+                Toast.makeText(this, getResources().getString(R.string.congratulations_profile_created), Toast.LENGTH_SHORT).show();
+                Log.i("profile on registration", "in DB");
+                Intent intent = new Intent(this,MainActivity.class);
+                intent.putExtra("id", userId);
+                startActivity(intent);
+            }
+        } catch (SQLiteConstraintException e) {
+            Toast.makeText(this, getResources().getString(R.string.existed_name_error), Toast.LENGTH_LONG).show();
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, getResources().getString(R.string.empty_field_error), Toast.LENGTH_LONG).show();
+        }
 
 
     }
