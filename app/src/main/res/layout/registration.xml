@@ -23,7 +23,7 @@
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/abc_primary_text_material_light"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:textStyle="normal"
             android:typeface="normal" />
     </FrameLayout>
@@ -87,7 +87,7 @@
         android:layout_below="@+id/radioGroup"
         android:editable="false"
         android:hint="@string/current_weight"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textColor="#ffd3d205"
         android:textColorHint="#ffff0d09"
         android:textSize="35dp" />

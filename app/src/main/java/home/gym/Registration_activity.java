@@ -1,6 +1,7 @@
 package home.gym;
 
 import android.app.Activity;
+import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -43,15 +44,23 @@ public class Registration_activity extends Activity {
         dataSource.open();
     }
     public void submit(View view){
-
-        Profile profile = new Profile(name.getText().toString(),Integer.parseInt(wrist.getText().toString()),
+        try{
+        Profile profile = new Profile(name.getText().toString().toUpperCase(),Integer.parseInt(wrist.getText().toString()),
                 Integer.parseInt(height.getText().toString()),true, Integer.parseInt(age.getText().toString()),
                 Float.parseFloat(weight.getText().toString()));
-        Log.i("profile on registration", "created");
-        dataSource.createProfile(profile.getName());
-        Log.i("profile on registration", "in DB");
 
-        Toast.makeText(this,dataSource.getProfile(profile.getName()).getName(),Toast.LENGTH_SHORT).show();
+      if(dataSource.createProfile(profile) > 0){
+           Log.i("profile on registration", "created");
+           Toast.makeText(this, getResources().getString(R.string.congratulations_profile_created),Toast.LENGTH_SHORT).show();
+           Log.i("profile on registration", "in DB");
+       }}catch (SQLiteConstraintException e){
+           Toast.makeText(this, getResources().getString(R.string.existed_name_error),Toast.LENGTH_LONG).show();
+       }catch (NumberFormatException e){
+           Toast.makeText(this, getResources().getString(R.string.empty_field_error),Toast.LENGTH_LONG).show();
+       }
+
+
+
 
 
     }

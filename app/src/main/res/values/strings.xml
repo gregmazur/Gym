@@ -5,7 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="get_in_GYM">Get in the GYM</string>
     <string name="newUserButton">I`m new here, wanna get in!</string>
-    <string name="registration_text">Just quickly fill your information and we go straight lifting some weights</string>
+    <string name="registration_text">Just quickly fill your information and we go straight lifting some weights!!!</string>
     <string name="submit">submit</string>
     <string name="female">female</string>
     <string name="male">male</string>
@@ -14,4 +14,7 @@
     <string name="new_height_hint">Your height (cm)</string>
     <string name="new_name_hint">Your name</string>
     <string name="current_weight">Your current weight</string>
+    <string name="congratulations_profile_created">Congratulations!!! /n You`re in!</string>
+    <string name="existed_name_error">Please enter a different name./n User with such name already exists</string>
+    <string name="empty_field_error">Please fill every field</string>
 </resources>

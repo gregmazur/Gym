@@ -9,4 +9,5 @@
     android:minHeight="40dp"
     android:textColor="#ff000000"
     android:textSize="20dp"
+    android:clickable="true"
     android:textStyle="normal|italic" />
