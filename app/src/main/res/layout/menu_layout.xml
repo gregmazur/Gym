@@ -10,13 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@mipmap/menu_button"
-        android:layout_marginTop="30sp">
+        android:layout_marginTop="30sp"
+        android:focusable="true"
+        android:clickable="true">
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:text="@string/btn_customTraining"
-            android:id="@+id/textView3"
+            android:id="@+id/customTrainingTV"
             android:focusable="true"
             android:textIsSelectable="false"
             android:textSize="40sp"
@@ -29,18 +31,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@mipmap/menu_button"
-        android:layout_marginTop="10sp">
+        android:layout_marginTop="10sp"
+        android:focusable="true"
+        android:clickable="true">
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:text="@string/btn_choseProgram"
-            android:id="@+id/textView4"
-            android:focusable="true"
-            android:textIsSelectable="false"
+            android:id="@+id/trainingSolutionsTV"
             android:textSize="40sp"
             android:typeface="serif"
             android:layout_weight="1"
             android:gravity="center" />
     </LinearLayout>
+
 </TableLayout>

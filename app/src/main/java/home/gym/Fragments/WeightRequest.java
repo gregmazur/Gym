@@ -20,9 +20,10 @@ import home.gym.R;
  */
 public class WeightRequest extends DialogFragment implements TextView.OnEditorActionListener {
     private EditText weight;
+    public static final String CURRENT_WEIGHT = "WEIGHT";
 
     public interface EditNameDialogListener {
-        void onFinishEditDialog(Float input);
+        void onFinishEditDialog(String input);
     }
 
     public WeightRequest() {
@@ -45,7 +46,7 @@ public class WeightRequest extends DialogFragment implements TextView.OnEditorAc
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (EditorInfo.IME_ACTION_DONE == actionId) {
             EditNameDialogListener listener = (EditNameDialogListener) getActivity();
-            listener.onFinishEditDialog(Float.parseFloat(weight.getText().toString()));
+            listener.onFinishEditDialog(weight.getText().toString());
             this.dismiss();
         }
         return false;

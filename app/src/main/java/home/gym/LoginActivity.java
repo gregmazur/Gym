@@ -47,11 +47,7 @@ public class LoginActivity extends FragmentActivity implements WeightRequest.Edi
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 showEditDialog();
-
-                startActivity(intent);
             }
         });
     }
@@ -69,7 +65,9 @@ public class LoginActivity extends FragmentActivity implements WeightRequest.Edi
     }
 
     @Override
-    public void onFinishEditDialog(Float input) {
-        intent.putExtra("WEIGHT", input);
+    public void onFinishEditDialog(String input) {
+        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+        intent.putExtra(WeightRequest.CURRENT_WEIGHT, input);
+        startActivity(intent);
     }
 }

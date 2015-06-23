@@ -16,6 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:autoText="false"
+            android:gravity="center"
             android:padding="3dp"
             android:paddingTop="2dp"
             android:singleLine="false"
@@ -90,10 +91,10 @@
         android:inputType="numberDecimal"
         android:textColor="#ffd3d205"
         android:textColorHint="#ffff0d09"
-        android:textSize="35dp" />
+        android:textSize="35dp"
+        android:imeOptions="actionDone"/>
 
     <RadioGroup
-        android:id="@+id/radioGroup"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/new_age"
@@ -106,12 +107,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.53"
             android:text="@string/male"
+            android:onClick="radioBtnClicked"
             android:textColor="#ffd3d205"
             android:textColorHint="#ffff0d09"
             android:textSize="30dp" />
 
         <RadioButton
             android:id="@+id/femaleBtn"
+            android:onClick="radioBtnClicked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.07"
@@ -130,6 +133,7 @@
         android:onClick="submit"
         android:singleLine="false"
         android:text="@string/submit"
-        android:textSize="35dp" />
+        android:textSize="35dp"
+        />
 
 </LinearLayout>

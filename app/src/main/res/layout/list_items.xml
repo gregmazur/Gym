@@ -8,5 +8,6 @@
     android:padding="8dp"
     android:minHeight="40dp"
     android:textColor="#ff000000"
-    android:textSize="20dp"
-    android:textStyle="normal|italic" />
+    android:textSize="23sp"
+
+    />

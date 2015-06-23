@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".Registration_activity"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MenuActivity"></activity>
     </application>
 
 </manifest>
