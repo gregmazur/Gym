@@ -35,7 +35,7 @@ public class Profile extends BaseEntity implements Serializable {
     public Profile() {
     }
 
-    public Profile(String name, int wristGirth, int height, boolean man, int age, float currentWeight) {
+    public Profile(String name, int wristGirth, int height, boolean man, int age) {//constructor for Registration activity
     /*Ecto < 18 M <15 W
 	 * Meso 18-20 ;15 -17
 	 * Endo >20;>17
@@ -60,7 +60,6 @@ public class Profile extends BaseEntity implements Serializable {
         this.man = man;
         this.name = name;
         idealWeight = idealWeight(height, age);
-        this.currentWeight = currentWeight;
     }
 
     private int idealWeight(int height, int age) {

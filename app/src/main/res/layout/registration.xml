@@ -81,18 +81,6 @@
         android:textColorHint="#ffff0d09"
         android:textSize="35dp" />
 
-    <EditText
-        android:id="@+id/weight_reg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/radioGroup"
-        android:editable="false"
-        android:hint="@string/current_weight"
-        android:inputType="numberDecimal"
-        android:textColor="#ffd3d205"
-        android:textColorHint="#ffff0d09"
-        android:textSize="35dp"
-        android:imeOptions="actionDone"/>
 
     <RadioGroup
         android:layout_width="fill_parent"

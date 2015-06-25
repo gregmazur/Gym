@@ -23,7 +23,7 @@ public class WeightRequest extends DialogFragment implements TextView.OnEditorAc
     public static final String CURRENT_WEIGHT = "WEIGHT";
 
     public interface EditNameDialogListener {
-        void onFinishEditDialog(String input);
+        void onFinishEditDialog(float input);
     }
 
     public WeightRequest() {
@@ -32,7 +32,7 @@ public class WeightRequest extends DialogFragment implements TextView.OnEditorAc
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.weight_request, container);
+        View view = inflater.inflate(R.layout.dialog_request_layout, container);
         weight = (EditText) view.findViewById(R.id.weight_current);
         getDialog().setTitle(R.string.weight_request_dialog_title);
 
@@ -46,7 +46,7 @@ public class WeightRequest extends DialogFragment implements TextView.OnEditorAc
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (EditorInfo.IME_ACTION_DONE == actionId) {
             EditNameDialogListener listener = (EditNameDialogListener) getActivity();
-            listener.onFinishEditDialog(weight.getText().toString());
+            listener.onFinishEditDialog(Float.parseFloat(weight.getText().toString()));
             this.dismiss();
         }
         return false;

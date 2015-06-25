@@ -29,7 +29,8 @@ public class LoginActivity extends FragmentActivity implements WeightRequest.Edi
     private ListView listView;
     private ArrayAdapter adapter;
     private ProfileDataSource dataSource;
-    public Intent intent;
+    private int profileId;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,35 +40,37 @@ public class LoginActivity extends FragmentActivity implements WeightRequest.Edi
         dataSource = new ProfileDataSource(this);
         dataSource.open();
         users = dataSource.getAllProfiles();
-        adapter = new ArrayAdapter(this, R.layout.list_items, users);
+        adapter = new ArrayAdapter(this, R.layout.list_items, R.id.item, users);
         listView.setAdapter(adapter);
-        listView.setClickable(true);
-        listView.setFocusable(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                showEditDialog();
+                Profile profile =(Profile)adapter.getItem(position);
+                profileId = profile.getId();
+                showWeightRequestDialog();
             }
         });
     }
 
 
     public void registration(View view) {
-        Intent intent = new Intent(this, Registration_activity.class);
+        Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
+
     }
 
-    private void showEditDialog() {
+    private void showWeightRequestDialog() {
         FragmentManager fm = getSupportFragmentManager();
         WeightRequest weightRequest = new WeightRequest();
         weightRequest.show(fm, "fragment_edit_name");
     }
 
     @Override
-    public void onFinishEditDialog(String input) {
+    public void onFinishEditDialog(float input) {
         Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
         intent.putExtra(WeightRequest.CURRENT_WEIGHT, input);
+        intent.putExtra("ID",profileId);
         startActivity(intent);
     }
 }

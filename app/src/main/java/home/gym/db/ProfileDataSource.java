@@ -19,7 +19,7 @@ public class ProfileDataSource {
     private MySQLiteHelper dbHelper;
     private String[] allColumns = {MySQLiteHelper.KEY_ID,
             MySQLiteHelper.KEY_USER_NAME, MySQLiteHelper.KEY_USER_TYPE, MySQLiteHelper.KEY_USER_SEX,
-            MySQLiteHelper.KEY_USER_IDEAL_WEIGHT, MySQLiteHelper.KEY_USER_CURRENT_WEIGHT, MySQLiteHelper.KEY_CREATED_AT};
+            MySQLiteHelper.KEY_USER_IDEAL_WEIGHT, MySQLiteHelper.KEY_CREATED_AT};
 
     public ProfileDataSource(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -39,7 +39,6 @@ public class ProfileDataSource {
         values.put(MySQLiteHelper.KEY_USER_TYPE, profile.getBodyType().toString());
         values.put(MySQLiteHelper.KEY_USER_SEX, profile.isManInt());
         values.put(MySQLiteHelper.KEY_USER_IDEAL_WEIGHT, profile.getIdealWeight());
-        values.put(MySQLiteHelper.KEY_USER_CURRENT_WEIGHT, profile.getCurrentWeight());
         values.put(MySQLiteHelper.KEY_CREATED_AT, MySQLiteHelper.getCurrentTime());
 
         return database.insert(MySQLiteHelper.TABLE_PROFILES, null,
@@ -95,8 +94,7 @@ public class ProfileDataSource {
         profile.setBodyType(BodyType.valueOf(cursor.getString(2)));
         profile.setManFromInt(cursor.getInt(3));
         profile.setIdealWeight(cursor.getFloat(4));
-        profile.setCurrentWeight(cursor.getFloat(5));
-        profile.setCreatedAt(cursor.getString(6));
+        profile.setCreatedAt(cursor.getString(5));
         return profile;
     }
 }

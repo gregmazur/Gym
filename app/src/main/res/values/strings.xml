@@ -13,8 +13,6 @@
     <string name="new_wrist_hint">Your wrist girth</string>
     <string name="new_height_hint">Your height (cm)</string>
     <string name="new_name_hint">Your name</string>
-    <string name="current_weight">Your current weight</string>
-    <string name="congratulations_profile_created">Congratulations!!! /n You`re in!</string>
     <string name="existed_name_message">Please enter a different name./n User with such name already exists</string>
     <string name="empty_field_message">Please fill every field</string>
     <string name="logo_registration">logo</string>
@@ -23,4 +21,9 @@
     <string name="weight_request">Enter your current weight(kg)</string>
     <string name="weight_request_dialog_title">Enter current body weight</string>
     <string name="unchecked_sex_button_message">Please enter your sex</string>
+    <string name="your_target_weight">Your target weight</string>
+    <string name="recomended_programs_for_you">RECOMENDED PROGRAMS FOR YOU</string>
+    <string name="you_should_gain">YOU SHOULD GAIN</string>
+    <string name="you_should_lose">YOU SHOULD LOSE</string>
+    <string name="search_hint">Enter the name of exercise you need</string>
 </resources>

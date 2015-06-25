@@ -27,7 +27,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String KEY_USER_SEX = "user_sex";
     public static final String KEY_USER_TYPE = "user_type";
     public static final String KEY_USER_IDEAL_WEIGHT = "user_ideal_weight";
-    public static final String KEY_USER_CURRENT_WEIGHT = "user_current_weight";
 
     //Exercise Table Fields
 
@@ -39,8 +38,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String KEY_EXERCISE_PIC2 = "exercise_pic2";
     public static final String KEY_EXERCISE_PIC3 = "exercise_pic3";
 
+    //Performance Table Fields
+    public static final String KEY_USER_CURRENT_WEIGHT = "user_current_weight";
+
     private static final String DATABASE_NAME = "gymbo.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION =6;
 
     // Database creation sql statement
     private static final String DATABASE_CREATE =//profiles
@@ -48,8 +50,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + TABLE_PROFILES + "(" + KEY_ID
             + " integer primary key autoincrement, " + KEY_USER_NAME
             + " text not null unique, " + KEY_USER_TYPE + " text, " + KEY_USER_SEX + " integer not null, "
-            + KEY_USER_IDEAL_WEIGHT + " real not null, " + KEY_USER_CURRENT_WEIGHT + " real not null, "
-            + KEY_CREATED_AT + " text);"
+            + KEY_USER_IDEAL_WEIGHT + " real not null, " + KEY_CREATED_AT + " text);"
             //exercises
             + "create table "
             + TABLE_EXERCISES + "(" + KEY_ID
