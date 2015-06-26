@@ -35,10 +35,10 @@ public class MenuActivity extends Activity {
         kilosToGetTarget = (TextView) findViewById(R.id.weightActionChangeKG);
         customTraining = (Button) findViewById(R.id.customTrainingTV);
         readyTraining = (Button) findViewById(R.id.trainingSolutionsTV);
-        Intent intent = getIntent();
-        currentWeight = intent.getFloatExtra(WeightRequest.CURRENT_WEIGHT, 0);
+        Intent receivedIntent = getIntent();
+        currentWeight = receivedIntent.getFloatExtra(WeightRequest.CURRENT_WEIGHT, 0);
         Log.i("INFORMATION", "RECIEVED currentWeight " + currentWeight);
-        userId = intent.getIntExtra("ID", 0);
+        userId = receivedIntent.getIntExtra("ID", 0);
         Log.i("INFORMATION", "RECIEVED ID " + userId);
         profileDataSource = new ProfileDataSource(this);
         profileDataSource.open();
@@ -55,7 +55,11 @@ public class MenuActivity extends Activity {
         customTraining.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                Intent customTrainingIntent = new Intent(getBaseContext(),Exercises_activity.class);
+                customTrainingIntent.putExtra("ID", userId);
+                customTrainingIntent.putExtra("NAME", profile.getName());
+                startActivity(customTrainingIntent);
+
 
             }
         });
@@ -71,6 +75,7 @@ public class MenuActivity extends Activity {
             actionToGetTarget.setTextColor(-65536);
             actionToGetTarget.setText(getResources().getString(R.string.you_should_lose));
             kilosToGetTarget.setText(String.valueOf(Math.abs(gainWeight())));
+            
         }
 
     }
@@ -78,6 +83,7 @@ public class MenuActivity extends Activity {
     private float gainWeight() {
         return profile.getIdealWeight() - currentWeight;
     }
+
 
 
 }

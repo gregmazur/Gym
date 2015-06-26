@@ -63,13 +63,10 @@ public class Profile extends BaseEntity implements Serializable {
     }
 
     private int idealWeight(int height, int age) {
-        if (age >= 40) {
-            height += 5;
-        }
         int weight;
         if (height < 165) {
             weight = height - 100;
-        } else if (height < 185) {
+        } else if (height < 186) {
             weight = height - 105;
         } else {
             weight = height - 110;
@@ -79,6 +76,9 @@ public class Profile extends BaseEntity implements Serializable {
         }
         if (bodyType == BodyType.ENDOMORPH) {
             weight += (weight * 0.1);
+        }
+        if (age >= 40) {
+            weight += 5;
         }
         return weight;
     }

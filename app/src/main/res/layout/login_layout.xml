@@ -19,11 +19,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"></ListView>
 
-    <Button
-        android:layout_width="386dp"
-        android:layout_height="wrap_content"
-        android:text="@string/newUserButton"
-        android:id="@+id/button"
-        android:onClick="registration"
-        android:layout_gravity="bottom|center_horizontal" />
+
 </LinearLayout>

@@ -48,7 +48,7 @@ public class ExercisesDataSource {
         values.put(MySQLiteHelper.KEY_CREATED_AT, MySQLiteHelper.getCurrentTime());
         values.put(MySQLiteHelper.KEY_CREATED_BY, userName);
 
-        return database.insert(MySQLiteHelper.TABLE_PROFILES, null,
+        return database.insert(MySQLiteHelper.TABLE_EXERCISES, null,
                 values);
 
     }

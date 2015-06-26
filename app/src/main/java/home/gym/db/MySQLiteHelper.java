@@ -41,23 +41,22 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     //Performance Table Fields
     public static final String KEY_USER_CURRENT_WEIGHT = "user_current_weight";
 
-    private static final String DATABASE_NAME = "gymbo.db";
-    private static final int DATABASE_VERSION =6;
+    private static final String DATABASE_NAME = "test.db";
+    private static final int DATABASE_VERSION =2;
 
     // Database creation sql statement
-    private static final String DATABASE_CREATE =//profiles
+    private static final String CREATE_PROFILES =
             "create table "
             + TABLE_PROFILES + "(" + KEY_ID
             + " integer primary key autoincrement, " + KEY_USER_NAME
             + " text not null unique, " + KEY_USER_TYPE + " text, " + KEY_USER_SEX + " integer not null, "
-            + KEY_USER_IDEAL_WEIGHT + " real not null, " + KEY_CREATED_AT + " text);"
-            //exercises
-            + "create table "
+            + KEY_USER_IDEAL_WEIGHT + " real not null, " + KEY_CREATED_AT + " text);";
+    private static final String CREATE_EXERCISES =  "create table "
             + TABLE_EXERCISES + "(" + KEY_ID
             + " integer primary key autoincrement, " + KEY_EXERCISE_NAME
             + " text not null unique, " + KEY_EXERCISE_PRI_MUSCLE + " text not null, " + KEY_EXERCISE_SEC_MUSCLE + " text, "
             + KEY_EXERCISE_DESCRIPTION + " text, " + KEY_EXERCISE_PIC1 + " blob, " + KEY_EXERCISE_PIC2 + " blob, "
-            + KEY_EXERCISE_PIC3 + " blob, " + KEY_CREATED_AT + " text," + KEY_CREATED_BY + " text," + KEY_MODIFIED_AT + " text,"
+            + KEY_EXERCISE_PIC3 + " blob, " + KEY_CREATED_AT + " text," + KEY_CREATED_BY + " text, " + KEY_MODIFIED_AT + " text,"
             + KEY_MODIFIED_BY + " text);";
 
 
@@ -73,7 +72,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase database) {
-        database.execSQL(DATABASE_CREATE);
+        database.execSQL(CREATE_PROFILES);
+        database.execSQL(CREATE_EXERCISES);
     }
 
     @Override

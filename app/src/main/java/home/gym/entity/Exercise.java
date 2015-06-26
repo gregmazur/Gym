@@ -73,4 +73,5 @@ public class Exercise extends BaseEntity {
     public void setSecondaryMuscle(String secondaryMuscle) {
         this.secondaryMuscle = secondaryMuscle;
     }
+
 }

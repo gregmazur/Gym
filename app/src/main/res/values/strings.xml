@@ -26,4 +26,8 @@
     <string name="you_should_gain">YOU SHOULD GAIN</string>
     <string name="you_should_lose">YOU SHOULD LOSE</string>
     <string name="search_hint">Enter the name of exercise you need</string>
+    <string name="primary_muscle">Primary muscle: </string>
+    <string name="sec_muscle">Secondary muscles: </string>
+    <string name="description">Description</string>
+    <string name="add_exercise">Add new exercise</string>
 </resources>

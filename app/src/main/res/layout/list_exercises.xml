@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffff4223"
+    android:descendantFocusability="blocksDescendants"
+    android:divider="#ffff3260">
+    <TextView
+        android:layout_width="fill_parent"
+        android:id="@+id/exercise"
+        android:layout_height="wrap_content"
+        android:background="#ffff6223"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="List Item"
+        android:padding="8dp"
+        android:minHeight="40dp"
+        android:textColor="#ff000000"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:minHeight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:text="PriMuscle"
+        android:background="#ffff7223"
+        android:id="@+id/exerciseMuscle"
+        android:textSize="25sp"/>
+    <TextView
+        android:minHeight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:text="SecMuscle"
+        android:background="#ffff7223"
+        android:id="@+id/exerciseSecMuscle"
+        android:textSize="25sp"/>
+    <TextView
+        android:minHeight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:text="Description"
+        android:background="#ffff7223"
+        android:id="@+id/exerciseDescription"
+        android:textSize="25sp"/>
+
+</LinearLayout>
